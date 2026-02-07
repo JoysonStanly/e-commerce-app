@@ -1,10 +1,13 @@
 import React from 'react'
 import { assets } from '../assets/assets'
-import { useState } from 'react'
+import { useState,useContext } from 'react'
+import { ShopContext } from '../context/ShopContext'
 import { Link,NavLink } from 'react-router-dom'
 
 const Navbar = () => {
 
+
+    const {setShowSearch} = useContext(ShopContext);
     const [visible,setVisible] = useState(false);
 
   return (
@@ -34,7 +37,7 @@ const Navbar = () => {
         </ul>
 
         <div className='flex items-center gap-6'>
-            <img src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
+            <img onClick={()=>  setShowSearch(true) } src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
              
             <div className='group relative'>
                 <img src={assets.profile_icon} className='w-5 cursor-pointer' alt="" />
